@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-
+import React, {Component} from 'react';
+import {PropTypes} from 'prop-types';
 import "./tile.scss";
 
 class Tile extends Component {
@@ -13,12 +13,15 @@ class Tile extends Component {
     }
 
     handleOnClick() {
-        this.setState({tileClicked: true });
+        const {tileIndex, handleUpdateTileState} = this.props;
+        handleUpdateTileState(tileIndex);
     }
 
     render() {
-        const { tileClicked } = this.state;
-        const marker = tileClicked ? <span className="tile__marker">X</span> : '';
+        const {tileClicked} = this.state;
+        const { tile } = this.props;
+        console.log("tile => ", tile);
+        const marker = tile != 0 ? <span className="tile__marker">{tile}</span> : '';
         return (
             <div className="tile" onClick={this.handleOnClick}>
                 {marker}
@@ -26,5 +29,11 @@ class Tile extends Component {
         )
     }
 }
+
+Tile.propTypes = {
+    tile: PropTypes.any,
+    tileIndex: PropTypes.number,
+    handleUpdateTileState: PropTypes.func
+};
 
 module.exports = Tile;

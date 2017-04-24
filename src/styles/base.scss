@@ -13,3 +13,44 @@ html, body {
 body {
   background-color: $background-main;
 }
+
+.main {
+  padding: 50px;
+  padding-top: 10px;
+
+  &__button {
+    padding: 10px 35px;
+    border-radius: 5px;
+    margin: 10px;
+    border: 1px solid $color-line-second;
+    font-family: LatoBold;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+
+    &--primary {
+      background-color: transparent;
+      color: $secondary-color
+    }
+
+    &--secondary {
+      background-color: $main-color;
+      color: $tile-background-color;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__header {
+
+    &--title {
+      display: inline-block;
+      color: $color-header-main;
+      font-family: LatoBold;
+    }
+  }
+}
+
