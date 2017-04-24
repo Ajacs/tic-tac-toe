@@ -1,0 +1,11 @@
+@import "../../styles/base";
+
+
+
+.board {
+  background-color: $secondary-color;
+  width: $board-width;
+  height: $board-height;
+  margin-left: 50px;
+  border-radius: 5px;
+}

@@ -1,0 +1,21 @@
+@import "../../styles/base";
+
+.tile {
+  padding: 0;
+  background-color: $tile-background-color;
+  float: left;
+  width: 120px;
+  height: 120px;
+  margin: 20px;
+  border-radius: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+
+  &__marker {
+    font-family: LatoRegular;
+    font-size: 100px;
+    vertical-align: middle;
+    text-align: center;
+    margin-left: 24px;
+  }
+}
