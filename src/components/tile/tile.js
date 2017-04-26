@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {PropTypes} from 'prop-types';
 import "./tile.scss";
 
+
 class Tile extends Component {
 
     constructor(props) {
@@ -13,17 +14,24 @@ class Tile extends Component {
     }
 
     handleOnClick() {
-        const {tileIndex, handleUpdateTileState} = this.props;
-        handleUpdateTileState(tileIndex);
+        const {tileIndex, handleUpdateTileState, tile, gameRunning} = this.props;
+        if(tile === 0 && gameRunning) {
+            handleUpdateTileState(tileIndex);
+        }
     }
 
     render() {
         const {tileClicked} = this.state;
         const { tile } = this.props;
-        console.log("tile => ", tile);
-        const marker = tile != 0 ? <span className="tile__marker">{tile}</span> : '';
+        let mark = tile;
+        if(tile === 1) {
+            mark = "X"
+        } else if( tile === -1) {
+            mark = "O"
+        }
+        const marker = tile !== 0 ? <span className="tile__marker">{mark}</span> : '';
         return (
-            <div className="tile" onClick={this.handleOnClick}>
+            <div className="tile" onClick={this.handleOnClick} disabled={tile !== 0}>
                 {marker}
             </div>
         )
@@ -33,7 +41,8 @@ class Tile extends Component {
 Tile.propTypes = {
     tile: PropTypes.any,
     tileIndex: PropTypes.number,
-    handleUpdateTileState: PropTypes.func
+    handleUpdateTileState: PropTypes.func,
+    gameRunning: PropTypes.bool
 };
 
 module.exports = Tile;

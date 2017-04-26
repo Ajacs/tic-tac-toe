@@ -12,6 +12,7 @@
   cursor: pointer;
 
   &__marker {
+    color: $color-header-main;
     font-family: LatoRegular;
     font-size: 100px;
     vertical-align: middle;

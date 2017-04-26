@@ -1,0 +1,11 @@
+@import "../../styles/base";
+
+.scoreboard {
+  display: inline-block;
+  float: right;
+
+  &__header {
+    color: $color-header-main;
+    font-family: LatoBold;
+  }
+}
