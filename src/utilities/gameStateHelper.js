@@ -106,5 +106,6 @@ module.exports = {
     nextTurn,
     updateBoardState,
     checkWin,
-    resetTilesState
+    resetTilesState,
+    checkFullBoard
 };

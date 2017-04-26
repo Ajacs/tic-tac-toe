@@ -13,7 +13,15 @@ class GameDetails extends Component {
     render() {
         const { tilesState, player, gameRunning } = this.props;
         const winner = GameStateHelper.checkWin(tilesState, !player);
-        const winnerMessage = winner ? <h1>{`The winner is the computer`}</h1> : '';
+        const isTie = !winner && GameStateHelper.checkFullBoard(tilesState);
+        let winnerMessage;
+        if(isTie) {
+            winnerMessage = <h1>{`Its a tie`}</h1>;
+        } else if(winner) {
+            winnerMessage = <h1>{`The winner is the computer`}</h1>;
+        } else {
+            winnerMessage = null;
+        }
         const gameRunningMessage = gameRunning ? 'Game runnning' : 'To start playing, please click New Game';
         return (
             <div className="scoreboard">

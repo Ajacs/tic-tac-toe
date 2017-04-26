@@ -38,9 +38,12 @@ class App extends Component {
     }
 
     handleOnResetClicked() {
-        const newState = Object.assign({}, this.state);
-        newState.tilesState = GameStateHelper.resetTilesState(newState.tilesState);
-        this.setState(newState);
+        const { gameRunning } = this.state;
+        if(gameRunning) {
+            const newState = Object.assign({}, this.state);
+            newState.tilesState = GameStateHelper.resetTilesState(newState.tilesState);
+            this.setState(newState);
+        }
     }
 
     handleOnNewGameClicked() {
@@ -53,6 +56,8 @@ class App extends Component {
         newState.currentPlayer = data[1];
         newState.gameRunning = true;
         if(GameStateHelper.checkWin(newState.tilesState, !newState.currentPlayer)) {
+            newState.gameRunning = false;
+        } else if(GameStateHelper.checkFullBoard(newState.tilesState)) {
             newState.gameRunning = false;
         }
         this.setState(newState);
